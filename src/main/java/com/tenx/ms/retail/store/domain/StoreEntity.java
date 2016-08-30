@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "stores")
+@Table(name = "store")
 @Access(AccessType.FIELD)
 public class StoreEntity {
     @Id

@@ -2,10 +2,14 @@ package com.tenx.ms.retail.stock.domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
+@Entity
+@Table(name = "stock")
 @Access(AccessType.FIELD)
 public class StockEntity {
     @Id

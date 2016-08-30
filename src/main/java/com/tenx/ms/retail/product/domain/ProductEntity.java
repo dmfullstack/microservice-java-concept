@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 @Access(AccessType.FIELD)
 public class ProductEntity {
 
