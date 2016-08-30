@@ -1,5 +1,7 @@
 package com.tenx.ms.retail.product.domain;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,6 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "products")
+@Access(AccessType.FIELD)
 public class ProductEntity {
 
     @Id
