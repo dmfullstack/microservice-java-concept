@@ -3,6 +3,7 @@ package com.tenx.ms.retail.store.rest.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+
 @ApiModel("Store model")
 public class Store {
     @ApiModelProperty(value = "The Id of the Store", readOnly = true)

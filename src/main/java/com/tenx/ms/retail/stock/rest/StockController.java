@@ -9,12 +9,12 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.apache.commons.lang.NotImplementedException;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @Api(value = "stock", description = "Stock API")
 @RestController("stockControllerV1")
@@ -29,9 +29,9 @@ public class StockController {
     )
     @RequestMapping(value = {"/{storeId:\\d+}/{productId:\\d+}"}, method = RequestMethod.POST)
     public ResourceCreated<Long> update(
-            @ApiParam(name = "storeId", value = "The store id") @PathVariable() long storeId,
-            @ApiParam(name = "productId", value = "The product id") @PathVariable() long productId,
-            @Validated @RequestBody Stock stock) {
+            @ApiParam(name = "storeId",   value = "The store id.")   @PathVariable() long  storeId,
+            @ApiParam(name = "productId", value = "The product id.") @PathVariable() long  productId,
+            @ApiParam(name = "stock",     value = "The stock.")      @RequestBody    Stock stock) {
         stock.setStoreId(storeId);
         stock.setProductId(productId);
 

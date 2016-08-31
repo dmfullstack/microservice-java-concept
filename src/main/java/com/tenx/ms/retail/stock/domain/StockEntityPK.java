@@ -2,6 +2,7 @@ package com.tenx.ms.retail.stock.domain;
 
 import java.io.Serializable;
 
+
 public class StockEntityPK implements Serializable{
     private long productId;
     private long storeId;

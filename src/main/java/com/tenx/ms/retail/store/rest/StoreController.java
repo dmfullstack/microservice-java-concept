@@ -1,6 +1,5 @@
 package com.tenx.ms.retail.store.rest;
 
-
 import com.sun.tools.javac.util.List;
 import com.tenx.ms.commons.rest.RestConstants;
 import com.tenx.ms.commons.rest.dto.ResourceCreated;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @Api(value = "stores", description = "Stores API")
 @RestController("storesControllerV1")
 @RequestMapping(RestConstants.VERSION_ONE + "/stores")
@@ -29,7 +29,8 @@ public class StoreController {
             @ApiResponse(code = 500, message = "Internal server error.")}
     )
     @RequestMapping(method = RequestMethod.POST)
-    public ResourceCreated<Long> create(@RequestBody Store store) {
+    public ResourceCreated<Long> create(
+            @ApiParam(name = "store", value = "The store.") @RequestBody Store store) {
         // TODO: Implement.
         throw new NotImplementedException();
     }

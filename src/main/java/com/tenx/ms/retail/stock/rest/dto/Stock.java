@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.NumberFormat;
 
+
 @ApiModel("Stock model.")
 public class Stock {
 
