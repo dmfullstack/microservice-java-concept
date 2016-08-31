@@ -20,7 +20,7 @@ public class OrderEntity {
     private long orderId;
     private long storeId;
     private Date orderDate;
-    private OrderStatus status;
+    private int status;
     private List<OrderDetailsEntity> products;
     private String firstName;
     private String lastName;
@@ -45,9 +45,9 @@ public class OrderEntity {
 
     public void setOrderDate(Date orderDate) {  }
 
-    public OrderStatus getStatus() { return status; }
+    public OrderStatus getStatus() { return OrderStatus.fromValue(this.status); }
 
-    public void setStatus(OrderStatus status) { this.status = status; }
+    public void setStatus(OrderStatus status) { this.status = status.getValue(); }
 
     public List<OrderDetailsEntity> getProducts() { return products; }
 

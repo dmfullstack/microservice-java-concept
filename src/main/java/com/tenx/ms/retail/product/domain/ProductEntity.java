@@ -23,13 +23,18 @@ public class ProductEntity {
     private double price;
 
 
+    public ProductEntity() {
+
+    }
+
+    public ProductEntity(long storeId) {
+        this.storeId = storeId;
+    }
+
+
     public long getProductId() { return this.productId; }
 
-    public void setProductId(long productId) { this.productId = productId; }
-
     public long getStoreId() { return this.storeId; }
-
-    public void setStoreId(long storeId) { this.storeId = storeId; }
 
     public String getName() { return this.name; }
 
