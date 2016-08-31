@@ -1,4 +1,4 @@
-package com.tenx.ms.retail.util;
+package com.tenx.ms.retail.common.util;
 
 import jdk.internal.org.objectweb.asm.ClassReader;
 import jdk.internal.org.objectweb.asm.Type;

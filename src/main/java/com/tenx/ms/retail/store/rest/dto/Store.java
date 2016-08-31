@@ -12,9 +12,12 @@ public class Store {
     private String name;
 
 
-    public Store() {}
+    public Store() {
+    }
 
-    public Store(long storeId) { this.storeId = storeId; }
+    public Store(long storeId) {
+        this.storeId = storeId;
+    }
 
 
     public long getStoreId() { return this.storeId; }
