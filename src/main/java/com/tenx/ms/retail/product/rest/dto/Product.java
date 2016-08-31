@@ -4,6 +4,7 @@ import com.tenx.ms.commons.validation.constraints.DollarAmount;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -13,28 +14,36 @@ public class Product {
     @ApiModelProperty(value = "The Id of the product.", readOnly = true)
     private long productId;
 
-    @ApiModelProperty("The Id of the store the product belongs to.")
+    @ApiModelProperty(value = "The Id of the store the product belongs to.", required = true)
+    @NotNull
     private long storeId;
 
-    @ApiModelProperty("The name of the product.")
+    @ApiModelProperty(value = "The name of the product.", required = true)
+    @NotNull
     private String name;
 
-    @ApiModelProperty("The product description.")
+    @ApiModelProperty(value = "The product description.", required = true)
+    @NotNull
     private String description;
 
-    @ApiModelProperty("The Stock Keeping Unit.")
+    @ApiModelProperty(value = "The Stock Keeping Unit.", required = true)
     @Pattern(regexp = "^[A-Za-z0-9]*$")
     @Size(min = 5, max = 10)
+    @NotNull
     private String sku;
 
-    @ApiModelProperty("The product price.")
+    @ApiModelProperty(value = "The product price.", required = true)
     @DollarAmount
+    @NotNull
     private double price;
 
 
-    public long getProductId() { return this.productId; }
+    public Product() {}
 
-    public void setProductId(long productId) { this.productId = productId; }
+    public Product(long productId) { this.productId = productId; }
+
+
+    public long getProductId() { return this.productId; }
 
     public long getStoreId() { return this.storeId; }
 

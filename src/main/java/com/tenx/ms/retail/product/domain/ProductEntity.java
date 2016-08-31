@@ -6,10 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 
 @Entity
-@Table(name = "product")
+@Table(name = "product", uniqueConstraints = @UniqueConstraint(columnNames = "sku"))
 @Access(AccessType.FIELD)
 public class ProductEntity {
 
@@ -23,9 +24,7 @@ public class ProductEntity {
     private double price;
 
 
-    public ProductEntity() {
-
-    }
+    public ProductEntity() { }
 
     public ProductEntity(long storeId) {
         this.storeId = storeId;

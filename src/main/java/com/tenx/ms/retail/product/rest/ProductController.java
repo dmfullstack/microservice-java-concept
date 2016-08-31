@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.apache.commons.lang.NotImplementedException;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class ProductController {
             @ApiResponse(code = 500, message = "Internal server error.")}
     )
     @RequestMapping(method = RequestMethod.POST)
-    public ResourceCreated<Long> create(Product product) {
+    public ResourceCreated<Long> create(@RequestBody Product product) {
         // TODO: Implement.
         throw new NotImplementedException();
     }

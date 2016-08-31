@@ -8,13 +8,16 @@ public class Store {
     @ApiModelProperty(value = "The Id of the Store", readOnly = true)
     private long storeId;
 
-    @ApiModelProperty(value = "The name of the Store")
+    @ApiModelProperty(value = "The name of the Store", required = true)
     private String name;
 
 
-    public long getStoreId() { return this.storeId; }
+    public Store() {}
 
-    public void setStoreId(long storeId) { this.storeId = storeId; }
+    public Store(long storeId) { this.storeId = storeId; }
+
+
+    public long getStoreId() { return this.storeId; }
 
     public String getName() { return this.name; }
 

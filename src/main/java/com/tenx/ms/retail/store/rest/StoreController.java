@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.apache.commons.lang.NotImplementedException;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class StoreController {
             @ApiResponse(code = 500, message = "Internal server error.")}
     )
     @RequestMapping(method = RequestMethod.POST)
-    public ResourceCreated<Long> create(Store store) {
+    public ResourceCreated<Long> create(@RequestBody Store store) {
         // TODO: Implement.
         throw new NotImplementedException();
     }
@@ -50,8 +51,8 @@ public class StoreController {
             @ApiResponse(code = 404, message = "Store not found."),
             @ApiResponse(code = 500, message = "Internal server error.")}
     )
-    @RequestMapping(value = {"/{id:\\d+}"}, method = RequestMethod.GET)
-    public Store get(@ApiParam(name = "id", value = "The store id.") @PathVariable long id) {
+    @RequestMapping(value = {"/{storeId:\\d+}"}, method = RequestMethod.GET)
+    public Store get(@ApiParam(name = "storeId", value = "The store id.") @PathVariable long storeId) {
         // TODO: Implement.
         throw new NotImplementedException();
     }

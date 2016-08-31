@@ -2,9 +2,22 @@ package com.tenx.ms.retail.stock.rest.dto;
 
 
 public class Stock {
+
     private long productId;
     private long storeId;
     private long count;
+
+
+    public Stock() {
+
+    }
+
+    public Stock(long storeId, long productId, long count) {
+        this.productId = productId;
+        this.storeId = storeId;
+        this.count = count;
+    }
+
 
     public long getProductId() { return this.productId; }
 
