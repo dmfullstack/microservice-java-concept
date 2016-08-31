@@ -1,6 +1,5 @@
 package com.tenx.ms.retail.orders.domain;
 
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
