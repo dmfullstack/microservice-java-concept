@@ -46,8 +46,8 @@ public class StoreController {
 
     @ApiOperation(value = "Gets the store matching the given id.")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Store successfully created."),
-            @ApiResponse(code = 412, message = "Unable to create store. Validation errors"),
+            @ApiResponse(code = 200, message = "Successfully retrieved store."),
+            @ApiResponse(code = 404, message = "Store not found."),
             @ApiResponse(code = 500, message = "Internal server error.")}
     )
     @RequestMapping(value = {"/{id:\\d+}"}, method = RequestMethod.GET)
