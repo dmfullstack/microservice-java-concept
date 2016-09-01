@@ -3,6 +3,7 @@ package com.tenx.ms.retail.orders.rest.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+
 @ApiModel("Order Details Model")
 public class OrderDetails {
     @ApiModelProperty(value = "The Order Id.", readOnly = true)

@@ -2,9 +2,11 @@ package com.tenx.ms.retail.orders.domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +22,7 @@ public class OrderEntity {
     private long storeId;
     private Date orderDate;
     private int status;
+    @OneToMany(mappedBy = "details_id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetailsEntity> products;
     private String firstName;
     private String lastName;
@@ -27,18 +30,15 @@ public class OrderEntity {
     private String phone;
 
 
-    /**
-     * Creates a new instance of the OrderEntity class.
-     * @param storeId The Store Id the order belongs to.
-     */
-    public OrderEntity(long storeId) {
-        this.storeId = storeId;
-    }
-
-
     public long getOrderId() { return orderId; }
 
+    public void setOrderId(long orderId) { this.orderId = orderId; }
+
+    public void setStatus(int status) { this.status = status; }
+
     public long getStoreId() { return storeId; }
+
+    public void setStoreId(long storeId) { this.storeId = storeId; }
 
     public Date getOrderDate() { return orderDate; }
 

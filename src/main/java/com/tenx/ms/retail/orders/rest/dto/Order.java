@@ -1,7 +1,5 @@
 package com.tenx.ms.retail.orders.rest.dto;
 
-
-import com.sun.istack.internal.NotNull;
 import com.tenx.ms.commons.validation.constraints.Email;
 import com.tenx.ms.commons.validation.constraints.PhoneNumber;
 import com.tenx.ms.retail.orders.domain.OrderStatus;
@@ -9,9 +7,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
 import java.util.List;
+
 
 @ApiModel("Order Model")
 public class Order {
@@ -58,7 +58,11 @@ public class Order {
 
     public long getOrderId() { return this.orderId; }
 
+    public void setOrderId(long orderId) { this.orderId = orderId; }
+
     public long getStoreId() { return this.storeId; }
+
+    public void setStoreId(long storeId) { this.storeId = storeId; }
 
     public Date getOrderDate() { return this.orderDate; }
 

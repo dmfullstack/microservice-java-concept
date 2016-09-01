@@ -2,6 +2,7 @@ package com.tenx.ms.retail.product.domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,7 +12,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "product", uniqueConstraints = @UniqueConstraint(columnNames = "sku"))
-@Access(AccessType.FIELD)
+// @Access(AccessType.FIELD)
 public class ProductEntity {
 
     @Id
@@ -21,6 +22,7 @@ public class ProductEntity {
     private String name;
     private String description;
     private String sku;
+    @Column(columnDefinition = "decimal")
     private double price;
 
 
@@ -32,22 +34,17 @@ public class ProductEntity {
 
 
     public long getProductId() { return this.productId; }
-
     public long getStoreId() { return this.storeId; }
 
     public String getName() { return this.name; }
-
     public void setName(String name) { this.name = name; }
 
     public String getDescription() { return this.description; }
-
     public void setDescription(String description) { this.description = description; }
 
     public String getSku() { return this.sku; }
-
     public void setSku(String sku) { this.sku = sku; }
 
     public double getPrice() { return this.price; }
-
     public void setPrice(double price) { this.price = price; }
 }

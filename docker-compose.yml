@@ -18,5 +18,5 @@ services:
     ports:
       - "11800:3306"
     environment:
-      MYSQL_DATABASE: 'sspms'
-      MYSQL_ROOT_PASSWORD: 'tenxdev'
+      MYSQL_DATABASE: 'retail'
+      MYSQL_ROOT_PASSWORD: '12345678'

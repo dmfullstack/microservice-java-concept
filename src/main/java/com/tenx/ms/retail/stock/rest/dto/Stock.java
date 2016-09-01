@@ -1,9 +1,10 @@
 package com.tenx.ms.retail.stock.rest.dto;
 
-import com.sun.istack.internal.NotNull;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.NumberFormat;
+
+import javax.validation.constraints.NotNull;
 
 
 @ApiModel("Stock model.")
