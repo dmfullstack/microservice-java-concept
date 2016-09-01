@@ -12,32 +12,32 @@ public class Stock {
 
     @ApiModelProperty(value = "The stock ID", readOnly = true)
     @NotNull
-    private long productId;
+    private Long productId;
     @ApiModelProperty(value = "The product ID", readOnly = true)
     @NotNull
-    private long storeId;
+    private Long storeId;
     @ApiModelProperty(value = "Product quantity", required = true)
     @NotNull
     @NumberFormat
-    private long count;
+    private Long count;
 
 
     public Stock() {
     }
 
-    public Stock(long storeId, long productId, long count) {
+    public Stock(Long storeId, Long productId, Long count) {
         this.productId = productId;
         this.storeId   = storeId;
         this.count     = count;
     }
 
 
-    public long getProductId() { return this.productId; }
-    public void setProductId(long productId) { this.productId = productId; }
+    public Long getProductId() { return this.productId; }
+    public void setProductId(Long productId) { this.productId = productId; }
 
-    public long getStoreId() { return this.storeId; }
-    public void setStoreId(long storeId) { this.storeId = storeId; }
+    public Long getStoreId() { return this.storeId; }
+    public void setStoreId(Long storeId) { this.storeId = storeId; }
 
-    public long getCount() { return this.count; }
-    public void setCount(long count) { this.count = count; }
+    public Long getCount() { return this.count; }
+    public void setCount(Long count) { this.count = count; }
 }

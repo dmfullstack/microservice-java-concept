@@ -8,22 +8,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import java.math.BigDecimal;
 
 
 @Entity
 @Table(name = "product", uniqueConstraints = @UniqueConstraint(columnNames = "sku"))
-// @Access(AccessType.FIELD)
+@Access(AccessType.FIELD)
 public class ProductEntity {
 
     @Id
     @GeneratedValue
-    private long productId;
-    private long storeId;
+    private Long productId;
+    private Long storeId;
     private String name;
     private String description;
     private String sku;
-    @Column(columnDefinition = "decimal")
-    private double price;
+    private BigDecimal price;
 
 
     public ProductEntity() { }
@@ -33,8 +33,8 @@ public class ProductEntity {
     }
 
 
-    public long getProductId() { return this.productId; }
-    public long getStoreId() { return this.storeId; }
+    public Long getProductId() { return this.productId; }
+    public Long getStoreId() { return this.storeId; }
 
     public String getName() { return this.name; }
     public void setName(String name) { this.name = name; }
@@ -45,6 +45,6 @@ public class ProductEntity {
     public String getSku() { return this.sku; }
     public void setSku(String sku) { this.sku = sku; }
 
-    public double getPrice() { return this.price; }
-    public void setPrice(double price) { this.price = price; }
+    public BigDecimal getPrice() { return this.price; }
+    public void setPrice(BigDecimal price) { this.price = price; }
 }

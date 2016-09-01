@@ -14,13 +14,12 @@ import javax.persistence.Table;
 public class StoreEntity {
     @Id
     @GeneratedValue
-    private long storeId;
+    private Long storeId;
     private String name;
 
 
-    public long getStoreId() { return this.storeId; }
+    public Long getStoreId() { return this.storeId; }
 
     public String getName() { return this.name; }
-
     public void setName(String name) { this.name = name; }
 }

@@ -1,22 +1,25 @@
 package com.tenx.ms.retail.product.rest.dto;
 
 import com.tenx.ms.commons.validation.constraints.DollarAmount;
+import com.tenx.ms.retail.common.util.AllowConverterAccess;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 
 @ApiModel("Product Model")
 public class Product {
     @ApiModelProperty(value = "The Id of the product.", readOnly = true)
-    private long productId;
+    @AllowConverterAccess
+    private Long productId;
 
     @ApiModelProperty(value = "The Id of the store the product belongs to.", required = true)
     @NotNull
-    private long storeId;
+    private Long storeId;
 
     @ApiModelProperty(value = "The name of the product.", required = true)
     @NotNull
@@ -35,33 +38,28 @@ public class Product {
     @ApiModelProperty(value = "The product price.", required = true)
     @DollarAmount
     @NotNull
-    private double price;
+    private BigDecimal price;
 
 
     public Product() {}
 
-    public Product(long productId) { this.productId = productId; }
+    public Product(Long productId) { this.productId = productId; }
 
 
-    public long getProductId() { return this.productId; }
+    public Long getProductId() { return this.productId; }
 
-    public long getStoreId() { return this.storeId; }
-
-    public void setStoreId(long storeId) { this.storeId = storeId; }
+    public Long getStoreId() { return this.storeId; }
+    public void setStoreId(Long storeId) { this.storeId = storeId; }
 
     public String getName() { return this.name; }
-
     public void setName(String name) { this.name = name; }
 
     public String getDescription() { return this.description; }
-
     public void setDescription(String description) { this.description = description; }
 
     public String getSku() { return this.sku; }
-
     public void setSku(String sku) { this.sku = sku; }
 
-    public double getPrice() { return this.price; }
-
-    public void setPrice(double price) { this.price = price; }
+    public BigDecimal getPrice() { return this.price; }
+    public void setPrice(BigDecimal price) { this.price = price; }
 }

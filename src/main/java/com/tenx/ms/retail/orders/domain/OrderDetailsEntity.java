@@ -15,21 +15,21 @@ public class OrderDetailsEntity {
 
     @Id
     @GeneratedValue
-    private long details_id;
-    private long orderId;
-    private long productId;
-    private long count;
+    private Long details_id;
+    private Long orderId;
+    private Long productId;
+    private Long count;
 
 
-    public long getDetailsId() { return this.details_id; }
-    public void getDetailsId (long id) { this.details_id = id; }
+    public Long getDetailsId() { return this.details_id; }
+    public void getDetailsId (Long id) { this.details_id = id; }
 
-    public long getOrderId() { return this.orderId; }
-    public void setOrderId(long orderId) { this.orderId = orderId; }
+    public Long getOrderId() { return this.orderId; }
+    public void setOrderId(Long orderId) { this.orderId = orderId; }
 
-    public long getProductId() { return this.productId; }
+    public Long getProductId() { return this.productId; }
     public void setProductId(long productId) { this.productId = productId; }
 
-    public long getCount() { return this.count; }
-    public void setCount(long count) { this.count = count; }
+    public Long getCount() { return this.count; }
+    public void setCount(Long count) { this.count = count; }
 }

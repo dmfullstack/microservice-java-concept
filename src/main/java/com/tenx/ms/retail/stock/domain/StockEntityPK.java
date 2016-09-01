@@ -1,17 +1,18 @@
 package com.tenx.ms.retail.stock.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 
 public class StockEntityPK implements Serializable{
-    private long productId;
-    private long storeId;
+    private Long productId;
+    private Long storeId;
 
-    public long getProductId() { return this.productId; }
-    public void setProductId(long productId) { this.productId = productId; }
+    public Long getProductId() { return this.productId; }
+    public void setProductId(Long productId) { this.productId = productId; }
 
-    public long getStoreId() { return this.storeId; }
-    public void setStoreId(long storeId) { this.storeId = storeId; }
+    public Long getStoreId() { return this.storeId; }
+    public void setStoreId(Long storeId) { this.storeId = storeId; }
 
     @Override
     public boolean equals(Object obj) {
@@ -20,6 +21,6 @@ public class StockEntityPK implements Serializable{
 
         StockEntityPK o = (StockEntityPK) obj;
 
-        return o.productId == this.productId && o.storeId == this.storeId;
+        return Objects.equals(o.productId, this.productId) && Objects.equals(o.storeId, this.storeId);
     }
 }

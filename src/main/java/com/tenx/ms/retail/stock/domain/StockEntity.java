@@ -14,29 +14,29 @@ import javax.persistence.Table;
 @IdClass(StockEntityPK.class)
 public class StockEntity {
     @Id
-    private long productId;
+    private Long productId;
     @Id
-    private long storeId;
-    private long count;
+    private Long storeId;
+    private Long count;
 
 
     public StockEntity() {
 
     }
 
-    public StockEntity(long productId, long storeId, long count) {
+    public StockEntity(Long productId, Long storeId, Long count) {
         this.productId = productId;
         this.storeId   = storeId;
         this.count     = count;
     }
 
 
-    public long getProductId() { return this.productId; }
-    public void setProductId(long productId) { this.productId = productId; }
+    public Long getProductId() { return this.productId; }
+    public void setProductId(Long productId) { this.productId = productId; }
 
-    public long getStoreId() { return this.storeId; }
-    public void setStoreId(long storeId) { this.storeId = storeId; }
+    public Long getStoreId() { return this.storeId; }
+    public void setStoreId(Long storeId) { this.storeId = storeId; }
 
-    public long getCount() { return this.count; }
-    public void setCount(long count) { this.count = count; }
+    public Long getCount() { return this.count; }
+    public void setCount(Long count) { this.count = count; }
 }
