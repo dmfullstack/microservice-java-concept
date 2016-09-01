@@ -1,5 +1,6 @@
 package com.tenx.ms.retail.store;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tenx.ms.commons.config.Profiles;
 import com.tenx.ms.commons.rest.RestConstants;
@@ -31,8 +32,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
+import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -53,47 +56,52 @@ public class TestStoreController extends AbstractIntegrationTest {
 
     @Test
     @FlywayTest
-    public void getById() {
-    }
-
-    @Test
-    @FlywayTest
     public void testGetAll() {
-        long store1 = createAsset(createSuccess);
-        long store2 = createAsset(createSuccess);
-        long store3 = createAsset(createSuccess);
+        List<Long> responseIds = new ArrayList<>();
 
-        List<Store> stores = getAll();
+        for (int i = 0; i < 5; i++)
+            responseIds.add(createAsset(createSuccess));
 
+        List<Store> stores   = getAll();
+        List<Long>  storeIds = new ArrayList<>();
+
+        assertEquals("getAll count does not match the amount of stores created", stores.size(), responseIds.size());
+        stores.stream().forEach(x -> storeIds.add(x.getStoreId()));
+        responseIds.stream().forEach(x -> assertTrue("Unable to find one of the created stores", storeIds.contains(x)));
     }
 
     @Test
     @FlywayTest
-    public void testCreateSuccess() {
-        long storeId = createAsset(createSuccess);
-        Store store = getStore(storeId);
+    public void testCreateSuccessAndGetSuccess() {
+        Long storeId = createAsset(createSuccess);
+        Store store = getStore(storeId, HttpStatus.OK);
         assertNotNull("Store cannot be null", store);
         assertEquals("Store ids don' match", store.getStoreId(), storeId);
     }
 
-    // Utility Methods
-
-    private long createAsset(File data) {
-        ResourceCreated<Integer> response = request(String.format(REQUEST_URI, basePath()), data, HttpMethod.POST, ResourceCreated.class);
-        assert response != null;
-        System.out.println(response.getId().getClass());
-        return response.getId().longValue();
+    @Test
+    @FlywayTest
+    public void testGetNotFound() {
+        getStore(1234567890, HttpStatus.NOT_FOUND);
     }
 
-    private Store getStore(long storeId) {
-        return request(String.format(REQUEST_URI, basePath()) + storeId, null, HttpMethod.GET, Store.class);
+    // Utility Methods
+
+    private Long createAsset(File data) {
+        ResourceCreated<Long> response = request(String.format(REQUEST_URI, basePath()), data, HttpMethod.POST, HttpStatus.OK, new TypeReference<ResourceCreated<Long>>() {});
+        assert response != null;
+        return response.getId();
+    }
+
+    private Store getStore(long storeId, HttpStatus expectedStatus) {
+        return request(String.format(REQUEST_URI, basePath()) + storeId, null, HttpMethod.GET, expectedStatus, new TypeReference<Store>() {});
     }
 
     private List<Store> getAll() {
-        return request(String.format(REQUEST_URI, basePath()), null, HttpMethod.GET, new ArrayList<Store>().getClass());
+        return request(String.format(REQUEST_URI, basePath()), null, HttpMethod.GET, HttpStatus.OK, new TypeReference<List<Store>>() {});
     }
 
-    private <T> T request(String url, File file, HttpMethod method, Class<T> returnClass) {
+    private <T> T request(String url, File file, HttpMethod method, HttpStatus expectedResponse, TypeReference<T> mappingInfo) {
         try {
             ResponseEntity<String> response = getJSONResponse(
                     template,
@@ -102,8 +110,8 @@ public class TestStoreController extends AbstractIntegrationTest {
                     method);
 
             String received = response.getBody();
-            assertEquals("HTTP Status code incorrect", HttpStatus.OK, response.getStatusCode());
-            return mapper.readValue(received, returnClass);
+            assertEquals("HTTP Status code incorrect", expectedResponse, response.getStatusCode());
+            return mapper.readValue(received, mappingInfo);
         } catch (IOException e) {
             fail(e.getMessage());
         }
