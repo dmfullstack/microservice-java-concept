@@ -9,6 +9,7 @@ import com.tenx.ms.retail.RetailServiceApp;
 import com.tenx.ms.retail.store.rest.dto.Store;
 import org.apache.commons.io.FileUtils;
 import org.flywaydb.test.annotation.FlywayTest;
+import org.flywaydb.test.junit.FlywayTestExecutionListener;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,15 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
@@ -33,6 +38,7 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = RetailServiceApp.class)
 @ActiveProfiles(Profiles.TEST_NOAUTH)
+@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, FlywayTestExecutionListener.class})
 public class TestStoreController extends AbstractIntegrationTest {
 
     private final static String API_VERSION = RestConstants.VERSION_ONE;
@@ -42,8 +48,8 @@ public class TestStoreController extends AbstractIntegrationTest {
 
     @Autowired
     private ObjectMapper mapper;
-    @Value("classpath:requests/store/create.success.json")
-    private File createSucess;
+    @Value("classpath:storeTests/create-success.json")
+    private File createSuccess;
 
     @Test
     @FlywayTest
@@ -52,13 +58,19 @@ public class TestStoreController extends AbstractIntegrationTest {
 
     @Test
     @FlywayTest
-    public void getAll() {
+    public void testGetAll() {
+        long store1 = createAsset(createSuccess);
+        long store2 = createAsset(createSuccess);
+        long store3 = createAsset(createSuccess);
+
+        List<Store> stores = getAll();
+
     }
 
     @Test
     @FlywayTest
     public void testCreateSuccess() {
-        long storeId = createAsset(createSucess);
+        long storeId = createAsset(createSuccess);
         Store store = getStore(storeId);
         assertNotNull("Store cannot be null", store);
         assertEquals("Store ids don' match", store.getStoreId(), storeId);
@@ -67,13 +79,18 @@ public class TestStoreController extends AbstractIntegrationTest {
     // Utility Methods
 
     private long createAsset(File data) {
-        ResourceCreated<Long> response = request(String.format(REQUEST_URI, basePath()), data, HttpMethod.POST, ResourceCreated.class);
+        ResourceCreated<Integer> response = request(String.format(REQUEST_URI, basePath()), data, HttpMethod.POST, ResourceCreated.class);
         assert response != null;
-        return response.getId();
+        System.out.println(response.getId().getClass());
+        return response.getId().longValue();
     }
 
     private Store getStore(long storeId) {
         return request(String.format(REQUEST_URI, basePath()) + storeId, null, HttpMethod.GET, Store.class);
+    }
+
+    private List<Store> getAll() {
+        return request(String.format(REQUEST_URI, basePath()), null, HttpMethod.GET, new ArrayList<Store>().getClass());
     }
 
     private <T> T request(String url, File file, HttpMethod method, Class<T> returnClass) {

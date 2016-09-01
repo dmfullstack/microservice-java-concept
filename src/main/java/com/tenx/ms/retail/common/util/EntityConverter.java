@@ -125,7 +125,8 @@ public class EntityConverter<T1, T2> {
                 f.setAccessible(true);
                 f.set(destination, value);
                 break;
-            } catch(NoSuchFieldException | IllegalAccessException e1){
+            } catch (NoSuchFieldException ignored) {
+            } catch (IllegalAccessException e1){
                 e1.printStackTrace();
             }
 

@@ -23,7 +23,7 @@ public class StoreService {
 
 
     @Transactional
-    public long create(Store store) {
+    public Long create(Store store) {
         return this.repository.save(CONVERTER.toT2(store)).getStoreId();
     }
 
