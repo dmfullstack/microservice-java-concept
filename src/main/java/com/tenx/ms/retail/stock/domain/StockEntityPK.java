@@ -13,14 +13,4 @@ public class StockEntityPK implements Serializable{
 
     public Long getStoreId() { return this.storeId; }
     public void setStoreId(Long storeId) { this.storeId = storeId; }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (!StockEntityPK.class.isInstance(obj))
-            return false;
-
-        StockEntityPK o = (StockEntityPK) obj;
-
-        return Objects.equals(o.productId, this.productId) && Objects.equals(o.storeId, this.storeId);
-    }
 }

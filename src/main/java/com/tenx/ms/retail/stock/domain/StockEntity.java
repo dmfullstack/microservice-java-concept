@@ -20,17 +20,6 @@ public class StockEntity {
     private Long count;
 
 
-    public StockEntity() {
-
-    }
-
-    public StockEntity(Long productId, Long storeId, Long count) {
-        this.productId = productId;
-        this.storeId   = storeId;
-        this.count     = count;
-    }
-
-
     public Long getProductId() { return this.productId; }
     public void setProductId(Long productId) { this.productId = productId; }
 

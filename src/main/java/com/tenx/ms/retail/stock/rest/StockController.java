@@ -47,7 +47,7 @@ public class StockController extends AbstractAPIController {
     }
 
     /*
-     *   Implemented this optional method to be able to set or update count with an extra parameter in the URL.
+     *  Implemented this optional method to be able to set or update count with an extra parameter in the URL.
      */
     @ApiOperation(value = "Adds/Update product quantity.")
     @ApiResponses(value = {
@@ -66,7 +66,7 @@ public class StockController extends AbstractAPIController {
     }
 
     /*
-     *  Optional Method
+     *  Not a part of the requirement, added this method to be able to consult the current stock of a product through the API.
      */
     @ApiOperation(value = "Adds/Update product quantity.")
     @ApiResponses(value = {

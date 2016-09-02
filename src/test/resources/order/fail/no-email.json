@@ -1,0 +1,22 @@
+{
+  "store_id": 1,
+  "order_date": "2016-09-01T12:00:00",
+  "status": "ORDERED",
+  "first_name": "Some Name",
+  "last_name": "Some LastName",
+  "phone": "987-654-3210",
+  "products": [
+    {
+      "product_id": 1,
+      "count": 10
+    },
+    {
+      "product_id": 2,
+      "count": 10
+    },
+    {
+      "product_id": 3,
+      "count": 10
+    }
+  ]
+}

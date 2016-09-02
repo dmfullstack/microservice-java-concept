@@ -41,11 +41,6 @@ public class Product {
     private BigDecimal price;
 
 
-    public Product() {}
-
-    public Product(Long productId) { this.productId = productId; }
-
-
     public Long getProductId() { return this.productId; }
 
     public Long getStoreId() { return this.storeId; }

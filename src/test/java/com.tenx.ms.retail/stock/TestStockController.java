@@ -20,6 +20,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
@@ -30,7 +32,6 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 @ActiveProfiles(Profiles.TEST_NOAUTH)
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class, FlywayTestExecutionListener.class})
 public class TestStockController extends AbstractRetailTest {
-    private static final long INVALID_ID        = 9999999;
     private static final long AMOUNT_OF_UPDATES = 5;
 
     @Value("classpath:stock/success/no-store.json")
@@ -143,14 +144,18 @@ public class TestStockController extends AbstractRetailTest {
     }
 
     /**
-     *  Serializes the stock to make a Json request. Done this way to be able to send dynamic data.
+     *  Serializes the a map with the same stock structure to make a Json request. Done this way to be able to send dynamic data.
      * @param storeId The Store Id
      * @param productId The Product Id
      * @param count The stock count
      * @return Serialized Json representing the data of a stock.
      */
     private String generateJsonRequest(long storeId, long productId, long count) {
-        Stock stock = new Stock(storeId, productId, count);
+        Map<String, Long> stock = new HashMap<>();
+        stock.put("store_id",   storeId);
+        stock.put("product_id", productId);
+        stock.put("count",      count);
+
         JSONObject json = new JSONObject(stock);
         return json.toString();
     }

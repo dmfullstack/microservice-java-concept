@@ -19,7 +19,8 @@ import static org.junit.Assert.fail;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 /**
- *  Abstract class with generic useful methods for any test class.
+ *  Abstract class with generic useful methods for any test class. This is in a separate class
+ *  since it might be something we may want to add in a common library.
  */
 public abstract class AbstractTest extends AbstractIntegrationTest {
     protected final static String API_VERSION = RestConstants.VERSION_ONE;
@@ -49,6 +50,10 @@ public abstract class AbstractTest extends AbstractIntegrationTest {
 
             String received = response.getBody();
             assertEquals("HTTP Status code incorrect", expectedResponse, response.getStatusCode());
+
+            if (response.getStatusCode() != HttpStatus.OK)
+                return null;
+
             return mappingInfo == null ? null : mapper.readValue(received, mappingInfo);
         } catch (IOException e) {
             fail(e.getMessage());

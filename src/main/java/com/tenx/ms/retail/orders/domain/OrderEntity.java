@@ -1,5 +1,8 @@
 package com.tenx.ms.retail.orders.domain;
 
+import com.tenx.ms.retail.common.util.AllowConverterAccess;
+import com.tenx.ms.retail.common.util.DenyConverterAccess;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
@@ -18,11 +21,12 @@ import java.util.List;
 public class OrderEntity {
     @Id
     @GeneratedValue
+    @AllowConverterAccess
     private Long orderId;
     private Long storeId;
     private Date orderDate;
     private int  status;
-    @OneToMany(mappedBy = "details_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetailsEntity> products;
     private String firstName;
     private String lastName;
@@ -31,17 +35,17 @@ public class OrderEntity {
 
 
     public Long getOrderId() { return orderId; }
-    public void setOrderId(Long orderId) { this.orderId = orderId; }
 
-    public Long getStoreId() { return storeId; }
+    public Long getStoreId() { return this.storeId; }
     public void setStoreId(Long storeId) { this.storeId = storeId; }
 
     public Date getOrderDate() { return orderDate; }
-    public void setOrderDate(Date orderDate) {  }
+    public void setOrderDate(Date orderDate) { this.orderDate = orderDate; }
 
     public OrderStatus getStatus() { return OrderStatus.fromValue(this.status); }
     public void setStatus(OrderStatus status) { this.status = status.getValue(); }
 
+    @DenyConverterAccess
     public List<OrderDetailsEntity> getProducts() { return products; }
     public void setProducts(List<OrderDetailsEntity> products) { this.products = products; }
 

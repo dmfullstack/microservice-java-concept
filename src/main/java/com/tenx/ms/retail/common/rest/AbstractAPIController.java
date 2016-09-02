@@ -1,6 +1,7 @@
 package com.tenx.ms.retail.common.rest;
 
 import com.tenx.ms.commons.rest.AbstractController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public abstract class AbstractAPIController extends AbstractController {
+
+    @Autowired
+    protected HttpServletResponse response;
 
     /**
      *  Occurs when a constraint is violated inserting entities in the db.

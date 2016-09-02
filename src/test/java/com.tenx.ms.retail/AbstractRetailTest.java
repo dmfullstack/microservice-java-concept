@@ -19,6 +19,8 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
  */
 public abstract class AbstractRetailTest extends AbstractTest {
 
+    protected static final long INVALID_ID = 9999999;
+
     /*
      *   The URLs for all APIs in the project.
      */
@@ -54,8 +56,7 @@ public abstract class AbstractRetailTest extends AbstractTest {
 
     protected Long createStore(File data, HttpStatus expectedStatus) {
         ResourceCreated<Long> response = request(String.format(STORE_REQUEST_URI, basePath()), data, HttpMethod.POST, expectedStatus, new TypeReference<ResourceCreated<Long>>() {});
-        assert response != null;
-        return response.getId();
+        return response != null ? response.getId() : null;
     }
 
     protected Store getStore(long storeId, HttpStatus expectedStatus) {
@@ -79,8 +80,7 @@ public abstract class AbstractRetailTest extends AbstractTest {
 
     protected Long createProduct(long storeId, File data, HttpStatus expectedStatus) {
         ResourceCreated<Long> response = request(String.format(PRODUCT_REQUEST_URI, basePath()) + storeId, data, HttpMethod.POST, expectedStatus, new TypeReference<ResourceCreated<Long>>() {});
-        assert response != null;
-        return response.getId();
+        return response != null ? response.getId() : null;
     }
 
     protected Product getProduct(long storeId, long productId, HttpStatus expectedStatus) {

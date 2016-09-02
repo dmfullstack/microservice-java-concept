@@ -65,6 +65,6 @@ public class TestStoreController extends AbstractRetailTest {
     @Test
     @FlywayTest
     public void testGetNotFound() {
-        getStore(1234567890, HttpStatus.NOT_FOUND);
+        getStore(INVALID_ID, HttpStatus.NOT_FOUND);
     }
 }

@@ -132,13 +132,13 @@ public class TestProductController extends AbstractRetailTest {
     @Test
     @FlywayTest
     public void testCreateInvalidStore() {
-        createProduct(123456789, createProductSuccess, HttpStatus.PRECONDITION_FAILED);
+        createProduct(INVALID_ID, createProductSuccess, HttpStatus.PRECONDITION_FAILED);
     }
 
     @Test
     @FlywayTest
     public void testGetNotFound() {
         Long storeId = createStore();
-        getProduct(storeId, 1234567890, HttpStatus.NOT_FOUND);
+        getProduct(storeId, INVALID_ID, HttpStatus.NOT_FOUND);
     }
 }

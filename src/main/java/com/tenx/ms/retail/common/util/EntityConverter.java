@@ -75,6 +75,9 @@ public class EntityConverter<T1, T2> {
     }
 
     private static void apply(Object destination, Object source, Method getter) {
+        if (getter.isAnnotationPresent(DenyConverterAccess.class))
+            return;
+
         String getterName = getter.getName();
         Object value = null;
 
@@ -119,20 +122,19 @@ public class EntityConverter<T1, T2> {
             try {
                 Field f = destination.getClass().getDeclaredField(fieldName);
 
-                if (f.isAnnotationPresent(AllowConverterAccess.class))
-                    return;
-
-                f.setAccessible(true);
-                f.set(destination, value);
-                break;
+                if (f.isAnnotationPresent(AllowConverterAccess.class)) {
+                    boolean wasAccessible = f.isAccessible();
+                    f.setAccessible(true);
+                    f.set(destination, value);
+                    f.setAccessible(wasAccessible);
+                    break;
+                }
             } catch (NoSuchFieldException ignored) {
-            } catch (IllegalAccessException e1){
-                e1.printStackTrace();
+            } catch (IllegalAccessException e){
+                e.printStackTrace();
             }
 
             current = current.getSuperclass();
         }
     }
-
-
 }

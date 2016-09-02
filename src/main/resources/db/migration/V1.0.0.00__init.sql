@@ -39,7 +39,8 @@ CREATE TABLE orders (
   last_name  VARCHAR(200) NOT NULL,
   email      VARCHAR(200) NOT NULL,
   phone      VARCHAR(20)  NOT NULL,
-  PRIMARY KEY (order_id)
+  PRIMARY KEY (order_id),
+  FOREIGN KEY (store_id)   REFERENCES store(store_id)
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 1;
@@ -49,7 +50,9 @@ CREATE TABLE order_details (
   order_id    BIGINT NOT NULL,
   product_id  BIGINT NOT NULL,
   count       BIGINT NOT NULL,
-  PRIMARY KEY (details_id)
+  PRIMARY KEY (details_id),
+  FOREIGN KEY (order_id)   REFERENCES orders(order_id),
+  FOREIGN KEY (product_id) REFERENCES product(product_id)
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 1;

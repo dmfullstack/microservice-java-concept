@@ -1,5 +1,7 @@
 package com.tenx.ms.retail.store.domain;
 
+import com.tenx.ms.retail.common.util.AllowConverterAccess;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
@@ -14,6 +16,7 @@ import javax.persistence.Table;
 public class StoreEntity {
     @Id
     @GeneratedValue
+    @AllowConverterAccess
     private Long storeId;
     private String name;
 

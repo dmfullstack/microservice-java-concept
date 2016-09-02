@@ -29,14 +29,8 @@ public class ProductEntity {
     private BigDecimal price;
 
 
-    public ProductEntity() { }
-
-    public ProductEntity(long storeId) {
-        this.storeId = storeId;
-    }
-
-
     public Long getProductId() { return this.productId; }
+
     public Long getStoreId() { return this.storeId; }
 
     public String getName() { return this.name; }

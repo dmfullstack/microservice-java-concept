@@ -1,10 +1,16 @@
 package com.tenx.ms.retail.orders.domain;
 
+import com.tenx.ms.retail.common.util.AllowConverterAccess;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -15,20 +21,23 @@ public class OrderDetailsEntity {
 
     @Id
     @GeneratedValue
-    private Long details_id;
-    private Long orderId;
+    @AllowConverterAccess
+    private Long detailsId;
+    @ManyToOne
+    @JoinColumn(name = "order_id", updatable = false)
+    private OrderEntity order;
     private Long productId;
     private Long count;
 
 
-    public Long getDetailsId() { return this.details_id; }
-    public void getDetailsId (Long id) { this.details_id = id; }
+    public Long getDetailsId() { return this.detailsId; }
+    public Long getOrderId() { return this.order.getOrderId(); }
 
-    public Long getOrderId() { return this.orderId; }
-    public void setOrderId(Long orderId) { this.orderId = orderId; }
+    public OrderEntity getOrder() { return this.order; }
+    public void setOrder(OrderEntity order) { this.order = order; }
 
     public Long getProductId() { return this.productId; }
-    public void setProductId(long productId) { this.productId = productId; }
+    public void setProductId(Long productId) { this.productId = productId; }
 
     public Long getCount() { return this.count; }
     public void setCount(Long count) { this.count = count; }
