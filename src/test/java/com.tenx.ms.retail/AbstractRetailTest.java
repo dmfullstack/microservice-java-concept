@@ -50,7 +50,7 @@ public abstract class AbstractRetailTest extends AbstractTest {
         Long  storeId = createStore(createStoreSuccess, HttpStatus.OK);
         Store store   = getStore(storeId, HttpStatus.OK);
         assertNotNull("Store cannot be null", store);
-        assertEquals("Store ids don't match", store.getStoreId(), storeId);
+        assertEquals("Store ids mismatch", store.getStoreId(), storeId);
         return storeId;
     }
 
@@ -74,7 +74,7 @@ public abstract class AbstractRetailTest extends AbstractTest {
         Long    productId = createProduct(storeId, createProductSuccess, HttpStatus.OK);
         Product product   = getProduct(storeId, productId, HttpStatus.OK);
         assertNotNull("Product cannot be null", product);
-        assertEquals("Product ids don't match", product.getProductId(), productId);
+        assertEquals("Product ids mismatch", product.getProductId(), productId);
         return productId;
     }
 

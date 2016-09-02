@@ -1,4 +1,4 @@
-package com.tenx.ms.retail.stock.repositories;
+package com.tenx.ms.retail.stock.repository;
 
 import com.tenx.ms.retail.stock.domain.StockEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

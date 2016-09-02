@@ -1,8 +1,8 @@
-package com.tenx.ms.retail.product.services;
+package com.tenx.ms.retail.product.service;
 
 import com.tenx.ms.retail.common.util.EntityConverter;
 import com.tenx.ms.retail.product.domain.ProductEntity;
-import com.tenx.ms.retail.product.repositories.ProductRepository;
+import com.tenx.ms.retail.product.repository.ProductRepository;
 import com.tenx.ms.retail.product.rest.dto.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

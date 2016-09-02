@@ -3,7 +3,7 @@ package com.tenx.ms.retail.stock.rest;
 import com.tenx.ms.commons.rest.RestConstants;
 import com.tenx.ms.retail.common.rest.AbstractAPIController;
 import com.tenx.ms.retail.stock.rest.dto.Stock;
-import com.tenx.ms.retail.stock.services.StockService;
+import com.tenx.ms.retail.stock.service.StockService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

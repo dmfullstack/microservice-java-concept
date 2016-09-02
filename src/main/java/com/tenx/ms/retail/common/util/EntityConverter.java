@@ -69,12 +69,18 @@ public class EntityConverter<T1, T2> {
 
         List<Method> methods = Arrays.asList(obj.getClass().getMethods());
 
-        methods.stream().filter(x -> x.getName().startsWith("get")).forEach(y -> EntityConverter.apply(ret, obj, y));
+        methods.stream()
+            .filter(x -> x.getName().startsWith("get"))
+            .forEach(y -> EntityConverter.apply(ret, obj, y, "get"));
+
+        methods.stream()
+            .filter(x -> x.getName().startsWith("is")  && (x.getReturnType() == boolean.class || x.getReturnType() == Boolean.class))
+            .forEach(y -> EntityConverter.apply(ret, obj, y, "is"));
 
         return ret;
     }
 
-    private static void apply(Object destination, Object source, Method getter) {
+    private static void apply(Object destination, Object source, Method getter, String getterPrefix) {
         if (getter.isAnnotationPresent(DenyConverterAccess.class))
             return;
 
@@ -97,7 +103,7 @@ public class EntityConverter<T1, T2> {
          *  Attempt to get a getter matching the field name of the setter and assigned the value.
          */
         try {
-            String methodName = getterName.replaceFirst("get", "set");
+            String methodName = getterName.replaceFirst(getterPrefix, "set");
             Method setter = destination.getClass().getMethod(methodName, getter.getReturnType());
 
             setter.invoke(destination, value);
@@ -113,7 +119,7 @@ public class EntityConverter<T1, T2> {
          *  will be done. If the given field is annotated with @AllowConverterAccess, the assignment
          *  will be made, otherwise it will be skipped.
          */
-        String fieldName = getterName.replaceFirst("get", "");
+        String fieldName = getterName.replaceFirst(getterPrefix, "");
         fieldName = fieldName.substring(0, 1).toLowerCase() + fieldName.substring(1);
 
         Class<?> current = destination.getClass();

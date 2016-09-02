@@ -1,7 +1,7 @@
-package com.tenx.ms.retail.orders.services;
+package com.tenx.ms.retail.orders.service;
 
 import com.tenx.ms.retail.orders.domain.OrderEntity;
-import com.tenx.ms.retail.orders.repositories.OrderRepository;
+import com.tenx.ms.retail.orders.repository.OrderRepository;
 import com.tenx.ms.retail.orders.rest.dto.Order;
 import com.tenx.ms.retail.orders.util.OrderConverter;
 import org.springframework.beans.factory.annotation.Autowired;

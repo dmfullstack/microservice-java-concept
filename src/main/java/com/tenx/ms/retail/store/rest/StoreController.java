@@ -4,7 +4,7 @@ import com.tenx.ms.commons.rest.RestConstants;
 import com.tenx.ms.commons.rest.dto.ResourceCreated;
 import com.tenx.ms.retail.common.rest.AbstractAPIController;
 import com.tenx.ms.retail.store.rest.dto.Store;
-import com.tenx.ms.retail.store.services.StoreService;
+import com.tenx.ms.retail.store.service.StoreService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
