@@ -1,8 +1,9 @@
 package com.tenx.ms.retail.product.domain;
 
+import com.tenx.ms.retail.common.util.AllowConverterAccess;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +19,9 @@ public class ProductEntity {
 
     @Id
     @GeneratedValue
+    @AllowConverterAccess
     private Long productId;
+    @AllowConverterAccess
     private Long storeId;
     private String name;
     private String description;
