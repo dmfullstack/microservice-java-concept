@@ -11,10 +11,8 @@ import javax.validation.constraints.NotNull;
 public class Stock {
 
     @ApiModelProperty(value = "The stock ID", readOnly = true)
-    @NotNull
     private Long productId;
     @ApiModelProperty(value = "The product ID", readOnly = true)
-    @NotNull
     private Long storeId;
     @ApiModelProperty(value = "Product quantity", required = true)
     @NotNull

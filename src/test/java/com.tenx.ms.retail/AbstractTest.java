@@ -31,15 +31,25 @@ public abstract class AbstractTest extends AbstractIntegrationTest {
 
     protected <T> T request(String url, File file, HttpMethod method, HttpStatus expectedResponse, TypeReference<T> mappingInfo) {
         try {
+            String payload = file != null ? FileUtils.readFileToString(file) : null;
+            return request(url, payload, method, expectedResponse, mappingInfo);
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
+        return null;
+    }
+
+    protected <T> T request(String url, String payload, HttpMethod method, HttpStatus expectedResponse, TypeReference<T> mappingInfo) {
+        try {
             ResponseEntity<String> response = getJSONResponse(
                     template,
                     url,
-                    file != null ? FileUtils.readFileToString(file) : null,
+                    payload,
                     method);
 
             String received = response.getBody();
             assertEquals("HTTP Status code incorrect", expectedResponse, response.getStatusCode());
-            return mapper.readValue(received, mappingInfo);
+            return mappingInfo == null ? null : mapper.readValue(received, mappingInfo);
         } catch (IOException e) {
             fail(e.getMessage());
         }

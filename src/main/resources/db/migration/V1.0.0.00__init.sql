@@ -23,7 +23,9 @@ CREATE TABLE stock (
   product_id BIGINT NOT NULL,
   store_id   BIGINT NOT NULL,
   count      BIGINT NOT NULL,
-  PRIMARY KEY (product_id, store_id)
+  PRIMARY KEY (product_id, store_id),
+  FOREIGN KEY (product_id) REFERENCES product(product_id),
+  FOREIGN KEY (store_id)   REFERENCES store(store_id)
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 1;

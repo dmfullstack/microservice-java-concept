@@ -2,6 +2,7 @@ package com.tenx.ms.retail.store.rest;
 
 import com.tenx.ms.commons.rest.RestConstants;
 import com.tenx.ms.commons.rest.dto.ResourceCreated;
+import com.tenx.ms.retail.common.rest.AbstractAPIController;
 import com.tenx.ms.retail.store.rest.dto.Store;
 import com.tenx.ms.retail.store.services.StoreService;
 import io.swagger.annotations.Api;
@@ -25,7 +26,7 @@ import java.util.List;
 @Api(value = "stores", description = "Stores API")
 @RestController("storesControllerV1")
 @RequestMapping(RestConstants.VERSION_ONE + "/stores")
-public class StoreController {
+public class StoreController extends AbstractAPIController {
     private static final Logger LOGGER = LoggerFactory.getLogger(StoreService.class);
 
     @Autowired

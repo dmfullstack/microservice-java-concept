@@ -20,20 +20,27 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 public abstract class AbstractRetailTest extends AbstractTest {
 
     /*
-     * The URLs for all APIs in the project.
+     *   The URLs for all APIs in the project.
      */
 
     protected static String STORE_REQUEST_URI   = "%s" + API_VERSION + "/stores/";
     protected static String PRODUCT_REQUEST_URI = "%s" + API_VERSION + "/products/";
+    protected static String STOCK_REQUEST_URI   = "%s" + API_VERSION + "/stock/";
+    protected static String ORDERS_REQUEST_URI  = "%s" + API_VERSION + "/orders/";
 
     /*
-     * The payloads of all successful creation of entities which are the ones that can be reused in all tests.
+     *   The payloads of all successful creation of entities which are the ones that can be reused in all tests.
      */
 
     @Value("classpath:store/success/create.json")
     protected File createStoreSuccess;
     @Value("classpath:product/success/create.json")
     protected File createProductSuccess;
+
+    /*
+     *   The following methods are in this abstract class to make them available for all tests since they all rely on creating and fetching
+     *   Stores and Products
+     */
 
     // Store Helpers
 
@@ -52,11 +59,11 @@ public abstract class AbstractRetailTest extends AbstractTest {
     }
 
     protected Store getStore(long storeId, HttpStatus expectedStatus) {
-        return request(String.format(STORE_REQUEST_URI, basePath()) + storeId, null, HttpMethod.GET, expectedStatus, new TypeReference<Store>() {});
+        return request(String.format(STORE_REQUEST_URI, basePath()) + storeId, (String) null, HttpMethod.GET, expectedStatus, new TypeReference<Store>() {});
     }
 
     protected List<Store> getAllStores() {
-        return request(String.format(STORE_REQUEST_URI, basePath()), null, HttpMethod.GET, HttpStatus.OK, new TypeReference<List<Store>>() {});
+        return request(String.format(STORE_REQUEST_URI, basePath()), (String) null, HttpMethod.GET, HttpStatus.OK, new TypeReference<List<Store>>() {});
     }
 
 
@@ -77,10 +84,10 @@ public abstract class AbstractRetailTest extends AbstractTest {
     }
 
     protected Product getProduct(long storeId, long productId, HttpStatus expectedStatus) {
-        return request(String.format(PRODUCT_REQUEST_URI, basePath()) + storeId + "/" + productId, null, HttpMethod.GET, expectedStatus, new TypeReference<Product>() {});
+        return request(String.format(PRODUCT_REQUEST_URI, basePath()) + storeId + "/" + productId, (String) null, HttpMethod.GET, expectedStatus, new TypeReference<Product>() {});
     }
 
     protected List<Product> getAllProducts(long storeId) {
-        return request(String.format(PRODUCT_REQUEST_URI, basePath()) + storeId, null, HttpMethod.GET, HttpStatus.OK, new TypeReference<List<Product>>() {});
+        return request(String.format(PRODUCT_REQUEST_URI, basePath()) + storeId, (String) null, HttpMethod.GET, HttpStatus.OK, new TypeReference<List<Product>>() {});
     }
 }

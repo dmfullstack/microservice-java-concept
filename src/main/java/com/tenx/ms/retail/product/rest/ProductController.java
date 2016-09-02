@@ -1,8 +1,8 @@
 package com.tenx.ms.retail.product.rest;
 
-import com.tenx.ms.commons.rest.AbstractController;
 import com.tenx.ms.commons.rest.RestConstants;
 import com.tenx.ms.commons.rest.dto.ResourceCreated;
+import com.tenx.ms.retail.common.rest.AbstractAPIController;
 import com.tenx.ms.retail.product.rest.dto.Product;
 import com.tenx.ms.retail.product.services.ProductService;
 import io.swagger.annotations.Api;
@@ -10,8 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.apache.commons.lang.NotImplementedException;
-import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +33,7 @@ import java.util.List;
 @Api(value = "products", description = "Products API")
 @RestController("productsControllerV1")
 @RequestMapping(RestConstants.VERSION_ONE + "/products")
-public class ProductController extends AbstractController {
+public class ProductController extends AbstractAPIController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
@@ -82,22 +80,5 @@ public class ProductController extends AbstractController {
             @ApiParam(name = "productId", value = "The product id.") @PathVariable long productId) {
         LOGGER.info("Getting product in store {} by id {}", storeId, productId);
         return this.service.getByStoreIdAndProductId(storeId, productId).get();
-    }
-
-
-    /**
-     *  Occurs when an attempt to create a product in an non-existing Store.
-     *
-     * @param ex The DataIntegrity exception
-     * @param request The API request.
-     * @param response The API response.
-     * @throws IOException
-     */
-    @ResponseStatus(value = HttpStatus.PRECONDITION_FAILED)
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    protected void handleDataIntegrityException(DataIntegrityViolationException ex,
-                                                  HttpServletRequest request,
-                                                  HttpServletResponse response) throws IOException {
-        response.sendError(HttpStatus.PRECONDITION_FAILED.value(), ex.getMessage());
     }
 }
