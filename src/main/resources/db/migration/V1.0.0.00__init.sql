@@ -13,7 +13,8 @@ CREATE TABLE product (
   description VARCHAR(500)   NOT NULL,
   sku         VARCHAR(10)    NOT NULL,
   price       DECIMAL(20, 2) NOT NULL,
-  PRIMARY KEY (product_id)
+  PRIMARY KEY (product_id),
+  FOREIGN KEY (store_id) REFERENCES store(store_id)
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 1;
