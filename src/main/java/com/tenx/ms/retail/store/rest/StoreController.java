@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +40,7 @@ public class StoreController {
     )
     @RequestMapping(method = RequestMethod.POST)
     public ResourceCreated<Long> create(
-            @ApiParam(name = "store", value = "The store.") @RequestBody Store store) {
+            @ApiParam(name = "store", value = "The store.") @RequestBody @Validated Store store) {
         LOGGER.info("Creating store {}", store);
         return new ResourceCreated<>(this.service.create(store));
     }
