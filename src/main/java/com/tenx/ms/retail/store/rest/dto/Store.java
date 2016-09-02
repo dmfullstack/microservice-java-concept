@@ -3,6 +3,8 @@ package com.tenx.ms.retail.store.rest.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
+
 
 @ApiModel("Store model")
 public class Store {
@@ -10,6 +12,7 @@ public class Store {
     private Long storeId;
 
     @ApiModelProperty(value = "The name of the Store", required = true)
+    @NotNull
     private String name;
 
 
