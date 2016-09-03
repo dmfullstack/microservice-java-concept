@@ -126,7 +126,7 @@ public class EntityConverter<T1, T2> {
 
         while (current != Object.class) {
             try {
-                Field f = destination.getClass().getDeclaredField(fieldName);
+                Field f = current.getDeclaredField(fieldName);
 
                 if (f.isAnnotationPresent(AllowConverterAccess.class)) {
                     boolean wasAccessible = f.isAccessible();
