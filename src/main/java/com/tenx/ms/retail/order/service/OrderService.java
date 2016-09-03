@@ -1,9 +1,9 @@
-package com.tenx.ms.retail.orders.service;
+package com.tenx.ms.retail.order.service;
 
-import com.tenx.ms.retail.orders.domain.OrderEntity;
-import com.tenx.ms.retail.orders.repository.OrderRepository;
-import com.tenx.ms.retail.orders.rest.dto.Order;
-import com.tenx.ms.retail.orders.util.OrderConverter;
+import com.tenx.ms.retail.order.domain.OrderEntity;
+import com.tenx.ms.retail.order.repository.OrderRepository;
+import com.tenx.ms.retail.order.rest.dto.Order;
+import com.tenx.ms.retail.order.util.OrderConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

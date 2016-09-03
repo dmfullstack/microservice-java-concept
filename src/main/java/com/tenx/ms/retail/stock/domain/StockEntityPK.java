@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
-public class StockEntityPK implements Serializable{
+public class StockEntityPK implements Serializable {
     private Long productId;
     private Long storeId;
 

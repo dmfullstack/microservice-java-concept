@@ -2,7 +2,6 @@ package com.tenx.ms.retail;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tenx.ms.commons.rest.RestConstants;
 import com.tenx.ms.commons.tests.AbstractIntegrationTest;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,6 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
  *  since it might be something we may want to add in a common library.
  */
 public abstract class AbstractTest extends AbstractIntegrationTest {
-    protected final static String API_VERSION = RestConstants.VERSION_ONE;
 
     protected final RestTemplate template = new TestRestTemplate();
 

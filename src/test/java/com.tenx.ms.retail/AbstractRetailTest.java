@@ -1,6 +1,7 @@
 package com.tenx.ms.retail;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.tenx.ms.commons.rest.RestConstants;
 import com.tenx.ms.commons.rest.dto.ResourceCreated;
 import com.tenx.ms.retail.product.rest.dto.Product;
 import com.tenx.ms.retail.store.rest.dto.Store;
@@ -19,7 +20,8 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
  */
 public abstract class AbstractRetailTest extends AbstractTest {
 
-    protected static final long INVALID_ID = 9999999;
+    protected final static String API_VERSION = RestConstants.VERSION_ONE;
+    protected static final long   INVALID_ID  = 9999999;
 
     /*
      *   The URLs for all APIs in the project.

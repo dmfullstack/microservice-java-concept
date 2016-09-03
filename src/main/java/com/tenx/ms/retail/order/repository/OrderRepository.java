@@ -1,6 +1,6 @@
-package com.tenx.ms.retail.orders.repository;
+package com.tenx.ms.retail.order.repository;
 
-import com.tenx.ms.retail.orders.domain.OrderEntity;
+import com.tenx.ms.retail.order.domain.OrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

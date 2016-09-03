@@ -1,17 +1,15 @@
-package com.tenx.ms.retail.orders;
+package com.tenx.ms.retail.order;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.tenx.ms.commons.config.Profiles;
 import com.tenx.ms.retail.AbstractRetailTest;
 import com.tenx.ms.retail.RetailServiceApp;
-import com.tenx.ms.retail.orders.domain.OrderStatus;
-import com.tenx.ms.retail.orders.rest.dto.Order;
-import com.tenx.ms.retail.store.rest.dto.Store;
+import com.tenx.ms.retail.order.domain.OrderStatus;
+import com.tenx.ms.retail.order.rest.dto.Order;
 import org.apache.commons.io.FileUtils;
 import org.flywaydb.test.annotation.FlywayTest;
 import org.flywaydb.test.junit.FlywayTestExecutionListener;
 import org.json.JSONObject;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;

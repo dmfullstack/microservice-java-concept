@@ -1,9 +1,9 @@
-package com.tenx.ms.retail.orders.rest;
+package com.tenx.ms.retail.order.rest;
 
 import com.tenx.ms.commons.rest.RestConstants;
 import com.tenx.ms.retail.common.rest.AbstractAPIController;
-import com.tenx.ms.retail.orders.rest.dto.Order;
-import com.tenx.ms.retail.orders.service.OrderService;
+import com.tenx.ms.retail.order.rest.dto.Order;
+import com.tenx.ms.retail.order.service.OrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -50,7 +50,7 @@ public class OrderController extends AbstractAPIController{
      */
     @ApiOperation(value = "Retrieves a given order by orderId.")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Order successfully placed."),
+            @ApiResponse(code = 200, message = "Order successfully retrieved."),
             @ApiResponse(code = 404, message = "Unable to retrieve order."),
             @ApiResponse(code = 500, message = "Internal server error.")}
     )

@@ -1,4 +1,4 @@
-package com.tenx.ms.retail.orders.domain;
+package com.tenx.ms.retail.order.domain;
 
 import com.tenx.ms.retail.common.util.AllowConverterAccess;
 import com.tenx.ms.retail.common.util.DenyConverterAccess;

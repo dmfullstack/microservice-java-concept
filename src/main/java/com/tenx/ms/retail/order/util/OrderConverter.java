@@ -1,10 +1,10 @@
-package com.tenx.ms.retail.orders.util;
+package com.tenx.ms.retail.order.util;
 
 import com.tenx.ms.retail.common.util.EntityConverter;
-import com.tenx.ms.retail.orders.domain.OrderDetailsEntity;
-import com.tenx.ms.retail.orders.domain.OrderEntity;
-import com.tenx.ms.retail.orders.rest.dto.Order;
-import com.tenx.ms.retail.orders.rest.dto.OrderDetails;
+import com.tenx.ms.retail.order.domain.OrderDetailsEntity;
+import com.tenx.ms.retail.order.domain.OrderEntity;
+import com.tenx.ms.retail.order.rest.dto.Order;
+import com.tenx.ms.retail.order.rest.dto.OrderDetails;
 
 import java.util.ArrayList;
 

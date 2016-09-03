@@ -1,4 +1,4 @@
-package com.tenx.ms.retail.orders.rest.dto;
+package com.tenx.ms.retail.order.rest.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

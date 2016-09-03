@@ -1,9 +1,9 @@
-package com.tenx.ms.retail.orders.rest.dto;
+package com.tenx.ms.retail.order.rest.dto;
 
 import com.tenx.ms.commons.validation.constraints.Email;
 import com.tenx.ms.commons.validation.constraints.PhoneNumber;
 import com.tenx.ms.retail.common.util.DenyConverterAccess;
-import com.tenx.ms.retail.orders.domain.OrderStatus;
+import com.tenx.ms.retail.order.domain.OrderStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
